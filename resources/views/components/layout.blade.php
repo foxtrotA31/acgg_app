@@ -22,7 +22,7 @@
             <!-- Logo Container -->
             <div class="flex items-center">
                 <!-- Logo -->
-                <a href="{{route('home')}}" class="cursor-pointer">
+                <a href="{{route('landing')}}" class="cursor-pointer">
                     <h3 class="text-2xl font-medium text-blue-500">
                         <img class=" h-12 w-14" src="{{URL('images/acgg_logo.png')}}" alt="ACGGLogo" />
                     </h3>
@@ -31,7 +31,7 @@
 
             <!-- Links Section -->
             <div class="items-center md:space-x-8 justify-center justify-items-start md:justify-items-center md:flex md:pt-2 w-full left-0 top-16 px-5 md:px-10 py-3 md:py-0 border-t md:border-t-0 hidden">
-                <a href="{{route('home')}}" class="flex text-white hover:text-blue-500 cursor-pointer transition-colors duration-300"> Home </a>
+                <a href="{{route('landing')}}" class="flex text-white hover:text-blue-500 cursor-pointer transition-colors duration-300"> Home </a>
 
                 <a class="flex text-white hover:text-blue-500 cursor-pointer transition-colors duration-300"> How it Works </a>
 
