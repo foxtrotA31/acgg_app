@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{env('APP_NAME')}}</title>
-
+    
     @vite(['resources/css/app.css','resources/js/app.js'])
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,7 +18,7 @@
     <header class="container">
         <!-- Navbar -->
         @guest
-        <nav class="flex justify-between md:justify-around py-4 bg-cyan-950/80 backdrop-blur-md shadow-md w-full px-10 fixed top-0 left-0 right-0 z-10 md:px-3">
+        <nav class="navbar  flex justify-between md:justify-around py-4 backdrop-blur-md shadow-md w-full px-10 fixed top-0 left-0 right-0 z-10 md:px-3">
             <!-- Logo Container -->
             <div class="flex items-center">
                 <!-- Logo -->
@@ -31,17 +31,17 @@
 
             <!-- Links Section -->
             <div class="items-center md:space-x-8 justify-center justify-items-start md:justify-items-center md:flex md:pt-2 w-full left-0 top-16 px-5 md:px-10 py-3 md:py-0 border-t md:border-t-0 hidden">
-                <a href="{{route('landing')}}" class="flex text-white hover:text-blue-500 cursor-pointer transition-colors duration-300"> Home </a>
+                <a href="{{route('landing')}}" class="nav-text  flex hover:text-blue-500 cursor-pointer transition-colors duration-300"> Home </a>
 
-                <a class="flex text-white hover:text-blue-500 cursor-pointer transition-colors duration-300"> How it Works </a>
+                <a class="nav-text  flex hover:text-blue-500 cursor-pointer transition-colors duration-300"> How it Works </a>
 
-                <a class="flex text-white hover:text-blue-500 cursor-pointer transition-colors duration-300"> About Us </a>
+                <a class="nav-text  flex hover:text-blue-500 cursor-pointer transition-colors duration-300"> About Us </a>
             </div>
 
             <!-- Auth Links -->
             <div class=" items-center space-x-5 hidden md:flex">
                 <!-- Register -->
-                <a href="{{ route('register') }}" class="flex text-white hover:text-blue-500 cursor-pointer transition-colors duration-300">
+                <a href="{{ route('register') }}" class="nav-text  flex hover:text-blue-500 cursor-pointer transition-colors duration-300">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 mr-2 mt-0.5 size-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                     </svg>
@@ -49,7 +49,7 @@
                 </a>
 
                 <!-- Login -->
-                <a href="{{route('login')}}" class="flex text-white cursor-pointer transition-colors duration-300 font-semibold hover:text-blue-600">
+                <a href="{{route('login')}}" class="nav-text  flex cursor-pointer transition-colors duration-300 font-semibold hover:text-blue-600">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 mr-2 mt-0.5 size-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25" />
                     </svg>
@@ -68,8 +68,8 @@
         @endguest
 
         @auth
-        <nav class="bg-white border-b border-gray-200 fixed z-30 w-full">
-        <div class="px-3 py-3 lg:px-5 lg:pl-3">
+        <nav class=" border-b border-gray-200 fixed z-30 w-full">
+        <div class="dashBoard-nav  px-3 py-3 lg:px-5 lg:pl-3">
         <div class="flex items-center justify-between">
         <div class="flex items-center justify-start">
             <button id="toggleSidebarMobile" aria-expanded="true" aria-controls="sidebar" class="lg:hidden mr-2 text-gray-600 hover:text-gray-900 cursor-pointer p-2 hover:bg-gray-100 focus:bg-gray-100 focus:ring-2 focus:ring-gray-100 rounded">
@@ -84,7 +84,7 @@
                 <img src="{{URL('images/acgg_logo.png')}}" class="h-6 mr-2" alt="Windster Logo">
                 <span class="self-center whitespace-nowrap">Acqua Care Green Guard</span>
             </a>
-        </div>
+        </div>w
         <div class="flex items-center">
             <form action="{{route('logout')}}" method="post">
             @csrf
@@ -117,13 +117,13 @@
         {{$slot}}
     </main>
     @endauth
-
+        
     {{-- Footer --}}
     @guest
-    <footer class=" bg-cyan-950 pt-10 sm:mt-10 w-full">
+    <footer class="footer sm:mt-10 w-full">
         <!-- Copyright Bar -->
         <div class="pt-2">
-            <div class="flex pb-5 px-3 m-auto pt-5 text-white text-sm flex-col md:flex-row max-w-6xl">
+            <div class="white-txt  flex pb-5 px-3 m-auto pt-5 text-sm flex-col md:flex-row max-w-6xl">
                 <div class="mt-2">© Copyright 2024-year. All Rights Reserved.</div>
             </div>
         </div>

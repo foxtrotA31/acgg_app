@@ -5,3 +5,69 @@
 section {
     font-family: "Poppins", sans-serif;
 }
+
+.navbar {
+    font-family: 'poppins';
+    background-color: #235D3A;
+}
+
+.nav-text {
+    color: #F7F5F2;
+    font-weight: 500;
+}
+
+.footer {
+    background-color: #235D3A;
+}
+
+.green-txt {
+    color: #235D3A;
+}
+
+.white-txt {
+    color: #F7F5F2;
+}
+
+.btn-color {
+    background-color: #235D3A;
+}
+
+.register-box {
+    background-color: #E8F5E9;
+    border-radius: 30px;
+    border: 1px solid #235D3A ;
+}
+
+.log-in-box {
+    background-color: #E8F5E9;
+    border-radius: 30px;
+    border: 1px solid #235D3A ;
+}
+
+.inputs {
+    background-color: #F7F5F2;
+}
+
+.dashBoard-nav {
+    background-color:#235D3A;
+    border-bottom: 1px solid #235D3A;
+    color: #F7F5F2;
+}
+
+.userSide-bar {
+    background-color: #F7F5F2;   
+    color: #235D3A;
+}
+
+.userSide-cont {
+    color: #235D3A;
+}
+
+.userSide-cont:hover {
+    background-color: #E8F5E9;
+}
+
+.dashboard-box {
+    background-color: #F7F5F2;
+}
+

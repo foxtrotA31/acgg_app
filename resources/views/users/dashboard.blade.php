@@ -1,7 +1,7 @@
 <x-layout>
 <x-user-layout>
 <div class="grid grid-cols-1 2xl:grid-cols-2 xl:gap-4">
-   <div class="bg-white shadow rounded-lg mb-4 p-4 sm:p-6 h-full">
+   <div class="dashboard-box  shadow rounded-lg mb-4 p-4 sm:p-6 h-full">
          <div class="flex items-center justify-between mb-4">
             <h3 class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">Irrigation Report</h3>
             
