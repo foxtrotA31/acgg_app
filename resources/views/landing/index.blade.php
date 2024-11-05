@@ -77,7 +77,7 @@
                 technology with nature. We recognize the difficulties of keeping plants healthy, especially in today’s
                 fast-paced world.
                 That’s why we developed this system, which integrates both web and IoT components, as part of our final
-                project. Our aim
+                project.<br><br> Our aim
                 is to provide small plant owners and enthusiasts with a smart, convenient way to monitor and water their
                 plants
                 remotely.

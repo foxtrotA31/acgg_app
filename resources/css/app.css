@@ -7,7 +7,6 @@ section {
 }
 
 .navbar {
-    font-family: 'poppins';
     background-color: #235D3A;
 }
 
@@ -71,3 +70,12 @@ section {
     background-color: #F7F5F2;
 }
 
+.dashboard-box-grn {
+    background-color: #235D3A;
+    color: #F7F5F2;
+}
+
+.irrigation-style {
+    color: #235D3A;
+    background-color: #E8F5E9;
+}
