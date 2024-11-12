@@ -1,32 +1,32 @@
 <x-layout>
 <x-user-layout>
 <div class="grid grid-cols-1 2xl:grid-cols-2 xl:gap-4">
-   <div class="bg-white shadow rounded-lg mb-4 p-4 sm:p-6 h-full">
-         <div class="flex items-center justify-between mb-4">
-            <h3 class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">Irrigation Report</h3>
+   <div class="dashboard-box  shadow rounded-lg mb-4 p-4 sm:p-6 h-full">
+         <div class="green-txt  flex items-center justify-between mb-4">
+            <h3 class="text-2xl sm:text-3xl leading-none font-bold ">Irrigation Report</h3>
             
          </div>
          <div class="mt-6">
-            <canvas id="myChart" width="1025" height="300" role="img" aria-label="line graph to show selling overview in terms of months and numbers" ></canvas>
+            <canvas  id="myChart" width="1025" height="300" role="img" aria-label="line graph to show selling overview in terms of months and numbers" ></canvas>
          </div>
    </div>
 </div>
 <div class="w-full grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4 my-4">
-   <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-2">
-         <div class="flex items-center justify-between mb-4">
+   <div class="dashboard-box shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-2">
+         <div class="green-txt  flex items-center justify-between mb-4">
             <div class="flex-shrink-0">
-               <h3 class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">Water Level Status </h3>
+               <h3 class="text-2xl sm:text-3xl leading-none font-bold ">Water Level Status </h3>
                <div class="mt-10">			
                   <div id="chartdiv2" class="w-full" style="height: 240px"></div>
                </div>
             </div>
          </div>      
    </div>
-   <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
+   <div class="dashboard-box-grn  shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
          <div class="mb-4 flex items-center justify-between">
             <div>
-               <h3 class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">Irrigation Schedule</h3>
-               <span class="text-base font-normal text-gray-500">These are the plants that are scheduled for Irrigation today</span>
+               <h3 class="text-2xl sm:text-3xl leading-none font-bold ">Irrigation Schedule</h3>
+               <span class="text-base font-normal ">These are the plants that are scheduled for Irrigation today</span>
             </div>
             <div class="flex-shrink-0">
                <a href="#" class="text-sm font-medium text-cyan-600 hover:bg-gray-100 rounded-lg p-2">View all</a>
@@ -37,21 +37,21 @@
                <div class="align-middle inline-block min-w-full">
                <div class="shadow overflow-hidden sm:rounded-lg">
                      <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
+                        <thead class="irrigation-style">
                            <tr>
-                           <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                           <th scope="col" class="p-4 text-left text-xs font-medium uppercase tracking-wider">
                                  Plant Name
                            </th>
-                           <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                           <th scope="col" class="p-4 text-left text-xs font-medium uppercase tracking-wider">
                                  Frenquency
                            </th>
-                           
-                           <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                           {{-- Include No. of times to water a plant in a day --}}
+                           <th scope="col" class="p-4 text-left text-xs font-medium uppercase tracking-wider">
                                  Status
                            </th>
                            </tr>
                         </thead>
-                        <tbody class="bg-white">
+                        <tbody class="bg-white green-txt">
                            <tr>
                            <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
                                  Plant A
@@ -63,8 +63,8 @@
                                  Complete
                            </td>
                            </tr>
-                           <tr class="bg-gray-50">
-                           <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900 rounded-lg rounded-left">
+                           <tr class="irrigation-style">
+                           <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
                                  Plant B
                            </td>
                            <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">

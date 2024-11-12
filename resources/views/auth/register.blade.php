@@ -1,8 +1,8 @@
 <x-layout>
-<div class="min-w-screen bg-gray-900 ">
-    <div class="bg-gray-100 w-full overflow-hidden" style="max-width:1000px">
+<div class="min-w-screen">
+    <div class="register-box  shadow-2xl w-full overflow-hidden" style="max-width:1000px">
         <div class="md:flex w-full">
-            <div class="hidden text-center text-white md:block w-1/2 bg-gradient-to-tr from-cyan-600 to bg-green-600 py-10 px-10">
+            <div class="white-txt  hidden text-center md:block w-1/2 bg-gradient-to-tr from-cyan-600 to bg-green-600 py-10 px-10">
                 <div class="flex justify-center mt-10">
                     <img src="{{URL('images/acgg_logo.png')}}" alt="acgg_logo" width="200">
                 </div>
@@ -10,8 +10,8 @@
                 <p>Your Plant's Best Friend</p>
             </div>
             <div class="w-full md:w-1/2 py-10 px-5 md:px-10">
-                <div class="text-center mb-10">
-                    <h1 class="font-bold text-3xl text-gray-900">REGISTER</h1>
+                <div class="green-txt text-center mb-10">
+                    <h1 class="font-bold text-3xl">REGISTER</h1>
                     <p>Enter your information to register</p>
                 </div>
                 <form action="{{route('register')}}" method="post">
@@ -62,7 +62,7 @@
                     
                     <div class="flex -mx-3">
                         <div class="w-full px-3 mb-5">
-                            <button class="block w-full max-w-xs mx-auto bg-green-600 hover:bg-cyan-700 focus:bg-cyan-700 text-white rounded-lg px-3 py-3 font-semibold">REGISTER NOW</button>
+                            <button class="btn-color white-txt block w-full max-w-xs mx-auto hover:bg-cyan-700 focus:bg-cyan-700 rounded-lg px-3 py-3 font-semibold">REGISTER NOW</button>
                         </div>
                     </div>
                 </form>
