@@ -7,6 +7,7 @@
     <title>{{env('APP_NAME')}}</title>
 
     @vite(['resources/css/app.css','resources/js/app.js'])
+    {{-- @vite('resources/css/app.css') --}}
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,7 +27,6 @@
     </main>
 
     <footer class=" bg-cyan-950 pt-10 sm:mt-10 w-full">
-        <!-- Copyright Bar -->
         <div class="pt-2">
             <div class="flex pb-5 px-3 m-auto pt-5 text-white text-sm flex-col md:flex-row max-w-6xl">
                 <div class="mt-2">© Copyright 2024-year. All Rights Reserved.</div>

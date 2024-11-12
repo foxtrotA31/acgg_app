@@ -45,7 +45,7 @@
                            <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                  Frenquency
                            </th>
-                           {{-- Include No. of times to water a plant in a day --}}
+                           
                            <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                  Status
                            </th>

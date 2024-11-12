@@ -1,197 +1,258 @@
 <x-layout>
 <x-user-layout>
-<div class="bg-white shadow rounded-lg mb-4 p-4 sm:p-6 h-full">    
-    <h3 class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">{{$plant->plant_name}}</h3>
-    <div class="mt-10 grid lg:grid-cols-2 gap-10">
+<div class="bg-white shadow rounded-lg mb-4 p-4 sm:p-6 h-full"> 
+    <div class="flex items-center justify-between">
+        <h3 class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">{{$plant->plantCategory->pc_name}} <span class="mx-5 text-cyan-500"> &#10093;</span> <span class="text-green-500">{{$plant->plant_name}}</span></h3>
+    
+        @if (!$plant->sensor)
+        <div class="text-right">
+            <a href="{{route('my_plants.edit', $plant->id)}}" class="text-cyan-600 inline-flex hover:bg-gray-100 hover:text-black group rounded-lg p-2"> 
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                <path fill-rule="evenodd" d="M11.078 2.25c-.917 0-1.699.663-1.85 1.567L9.05 4.889c-.02.12-.115.26-.297.348a7.493 7.493 0 0 0-.986.57c-.166.115-.334.126-.45.083L6.3 5.508a1.875 1.875 0 0 0-2.282.819l-.922 1.597a1.875 1.875 0 0 0 .432 2.385l.84.692c.095.078.17.229.154.43a7.598 7.598 0 0 0 0 1.139c.015.2-.059.352-.153.43l-.841.692a1.875 1.875 0 0 0-.432 2.385l.922 1.597a1.875 1.875 0 0 0 2.282.818l1.019-.382c.115-.043.283-.031.45.082.312.214.641.405.985.57.182.088.277.228.297.35l.178 1.071c.151.904.933 1.567 1.85 1.567h1.844c.916 0 1.699-.663 1.85-1.567l.178-1.072c.02-.12.114-.26.297-.349.344-.165.673-.356.985-.57.167-.114.335-.125.45-.082l1.02.382a1.875 1.875 0 0 0 2.28-.819l.923-1.597a1.875 1.875 0 0 0-.432-2.385l-.84-.692c-.095-.078-.17-.229-.154-.43a7.614 7.614 0 0 0 0-1.139c-.016-.2.059-.352.153-.43l.84-.692c.708-.582.891-1.59.433-2.385l-.922-1.597a1.875 1.875 0 0 0-2.282-.818l-1.02.382c-.114.043-.282.031-.449-.083a7.49 7.49 0 0 0-.985-.57c-.183-.087-.277-.227-.297-.348l-.179-1.072a1.875 1.875 0 0 0-1.85-1.567h-1.843ZM12 15.75a3.75 3.75 0 1 0 0-7.5 3.75 3.75 0 0 0 0 7.5Z" clip-rule="evenodd" />
+                </svg><span class="mx-1 font-semibold">Apply Sensor</span>
+            </a>
+        </div>
+        @endif
+    </div>
+    <p class="mt-5 text-justify">{{$plant->plantCategory->pc_description}}</p>
+    
+    <div class="mt-10 grid grid-cols-3 gap-6">
         <div>
-            <div class="grid grid-cols-2">
-                <div>
-                <h3 class="font-bold text-gray-900">Irrigation Frequency : {{$plant->irrigation_frequency}}</h3>
-                <h3 class="font-bold text-gray-900">Action Start : {{date('h:i a', strtotime($plant->action_start))}}</h3>
-                </div>
-            </div>
-
-            <hr class="my-10">
-            
-            <h3 class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">Irrigation History</h3>
-            <table class="min-w-full divide-y divide-gray-200 mt-5">
-                <thead class="bg-gray-50">
-                    <tr>
-                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Date
-                        </th>
-                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Day
-                        </th>
-                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Watering Duration
-                        </th>
-                        <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Soil Moisture Status
-                        </th>
-                    </tr>
-                </thead>
-                <tbody class="bg-white">
-                    <tr>
-                        <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                        31-OCT-24
-                        </td>
-                        <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                        Monday
-                        </td>
-                        <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                        30 Minutes
-                        </td>
-                        <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                        Wet
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                        31-OCT-24
-                        </td>
-                        <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                        Monday
-                        </td>
-                        <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                        30 Minutes
-                        </td>
-                        <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                        Wet
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                        31-OCT-24
-                        </td>
-                        <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                        Monday
-                        </td>
-                        <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                        30 Minutes
-                        </td>
-                        <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                        Wet
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <h3 class="text-2xl sm:text-3xl leading-none font-bold text-gray-900 text-center">Ideal Moisture</h3>
+            <p class=" text-8xl text-center mt-10 text-green-600">{{$plant->plantCategory->pc_ideal_moisture}}%</p>
         </div>
         <div>
-            <h3 class="text-2xl sm:text-3xl leading-none font-bold text-gray-900 text-center">Soil Moisture Status</h3>
-            <div class="mt-10">			
-				<div id="chartdiv2" class="w-full" style="height: 240px"></div>
-            </div>
+            <h3 class="text-2xl sm:text-3xl leading-none font-bold text-gray-900 text-center">Wilting Point</h3>
+            <p class="text-8xl text-center mt-10 text-red-600">{{$plant->plantCategory->pc_wilting_point}}%</p>
+        </div>
+        <div>
+            <h3 class="text-2xl sm:text-3xl leading-none font-bold text-gray-900 text-center">Current Moisture</h3>
+            <p class="text-8xl text-center mt-10 text-cyan-600" id="data"> </p>
         </div>
     </div>
-    <div class="mt-10">
+
+    <div class="my-20">
+        <h3 class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">Irrigation History</h3>
+        @if ($plant->sensor)
+        <table class="min-w-full divide-y divide-gray-200 mt-5">
+            <thead class="bg-gray-50">
+                <tr>
+                    <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Date
+                    </th>
+                    <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Sensor ID
+                    </th>
+                    <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Time Started
+                    </th>
+                    <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Time Ended
+                    </th>
+                    <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Duration
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="bg-white" id="logsContainer">
+                
+            </tbody>
+        </table>
+        @else
+        <p class="mt-10 text-center text-gray-400">There are no irrigation logs available for this plant. Please connect a sensor to enable monitoring.</p>
+        @endif
+    </div>
+    <div class="my-20">
         <h3 class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">From Seed to Sprout Gallery</h3>
         <p>Your Plant's Journey Begins Here! Capture and Witness the Magic of Growth.</p>
         <div class="grid grid-cols-5 gap-5 mt-10">
-            <div class="card">
-                <img src="{{URL('images/default_moneyplant.jpg')}}" alt="">
-            </div>
-            <div class="card">
-                <img src="{{URL('images/default_moneyplant.jpg')}}" alt="">
-            </div>
-            <div class="card">
-                <img src="{{URL('images/default_moneyplant.jpg')}}" alt="">
-            </div>
-            <div class="card">
-                <img src="{{URL('images/default_moneyplant.jpg')}}" alt="">
-            </div>
-            <div class="card">
-                <img src="{{URL('images/default_moneyplant.jpg')}}" alt="">
-            </div>
-            <div class="card">
-                <img src="{{URL('images/default_moneyplant.jpg')}}" alt="">
-            </div>
+            {{-- foreach --}}
             <div class="card">
                 <img src="{{URL('images/default_moneyplant.jpg')}}" alt="">
             </div>
         </div>
     </div>
-    
 </div>
 </x-user-layout>
 </x-layout>
-
-{{-- For Display Only. Okay to remove and replace Chart--}}
-<script src="https://www.amcharts.com/lib/4/core.js"></script>
-<script src="https://www.amcharts.com/lib/4/charts.js"></script>
-<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
-
+@if($plant->sensor)
 <script>
-    function radar_chart(selector, data) {
-        // Themes begin
-        // Themes end
-        am4core.useTheme(am4themes_animated);
 
-        // Create chart instance
-        var chart = am4core.create(selector, am4charts.RadarChart);
+    const idealMoisture = {{$plant->plantCategory->pc_ideal_moisture}};
+    const wiltingPoint = {{$plant->plantCategory->pc_wilting_point}};
+    const plantId = {{$plant->id}};
+    const sensorId = {{$plant->sensor->id}};
 
+    let irrigationLogId = null; 
+
+    let lastLogId = null;
+
+    function sendRequest(value) {
+        const url = `http://122.3.114.27:4000/?topic=smartgarden/&value=${value}`;
         
-        chart.data = data;
-
-        // Make chart not full circle
-        chart.startAngle = -90;
-        chart.endAngle = 180;
-        chart.innerRadius = am4core.percent(20);
-
-        // Set number format
-        chart.numberFormatter.numberFormat = "#.#'%'";
-
-        // Create axes
-        var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
-        categoryAxis.dataFields.category = "category";
-        categoryAxis.renderer.grid.template.location = 0;
-        categoryAxis.renderer.grid.template.strokeOpacity = 0;
-        categoryAxis.renderer.labels.template.horizontalCenter = "right";
-        categoryAxis.renderer.labels.template.fontWeight = 500;
-        categoryAxis.renderer.labels.template.adapter.add("fill", function (fill, target) {
-            return (target.dataItem.index >= 0) ? chart.colors.getIndex(target.dataItem.index) : fill;
-        });
-        categoryAxis.renderer.minGridDistance = 10;
-
-        var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
-        valueAxis.renderer.grid.template.strokeOpacity = 0;
-        valueAxis.min = 0;
-        valueAxis.max = 100;
-        valueAxis.strictMinMax = true;
-
-        // Create series
-        var series1 = chart.series.push(new am4charts.RadarColumnSeries());
-        series1.dataFields.valueX = "full";
-        series1.dataFields.categoryY = "category";
-        series1.clustered = false;
-        series1.columns.template.fill = new am4core.InterfaceColorSet().getFor("alternativeBackground");
-        series1.columns.template.fillOpacity = 0.08;
-        series1.columns.template.cornerRadiusTopLeft = 10;
-        series1.columns.template.strokeWidth = 0;
-        series1.columns.template.radarColumn.cornerRadius = 10;
-
-        var series2 = chart.series.push(new am4charts.RadarColumnSeries());
-        series2.dataFields.valueX = "value";
-        series2.dataFields.categoryY = "category";
-        series2.clustered = false;
-        series2.columns.template.strokeWidth = 0;
-        series2.columns.template.tooltipText = "{category}: [bold]{value}[/]";
-        series2.columns.template.radarColumn.cornerRadius = 10;
-
-        series2.columns.template.adapter.add("fill", function (fill, target) {
-            return chart.colors.getIndex(target.dataItem.index);
-        });
-
-        // Add cursor
-        chart.cursor = new am4charts.RadarCursor();
+        fetch(url, { method: 'GET' })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Request successful');
+                    if (value === 1) {
+                        startIrrigationLog();
+                    } else if (value === 0 && irrigationLogId) {
+                        endIrrigationLog();
+                    }
+                } else {
+                    console.log('Request failed');
+                }
+            })
+            .catch(error => console.error('Error:', error));
     }
 
-    am4core.ready(function () {
-        radar_chart("chartdiv2", [{
-            "category": "Soil Moisture",
-            "value": 80,
-            "full": 100
-        }, ]);
-    }); // end am4core.ready()
+    function fetchData() {
+        $.ajax({
+            url: 'http://122.3.114.27:4000/?topic=smartgarden/data',
+            method: 'GET',
+            dataType: 'json', 
+            success: function(data) {
+                console.log(data);
+                
+                $('#data').text(`${data.moisture}%`);
+                if(data.id == sensorId){
+                    //  $('#data').text(`Sensor ID: ${data.id}, Moisture Level: ${data.moisture}`);
+                    if (data.moisture <= wiltingPoint && irrigationLogId === null) 
+                    {
+                        sendRequest(1);
+                    } 
+                    else if (data.moisture >= idealMoisture && irrigationLogId) 
+                    {
+                        sendRequest(0);
+                    }
+                } else {
+                    console.log(data.id + ' is not equal to ' + sensorId);
+                }
+                
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error('Error fetching data:', textStatus, errorThrown);
+                $('#data').text('Error loading data');
+            }
+        });
+    }
+
+    function startIrrigationLog() {
+        $.ajax({
+            url: `{{route('startLog')}}`,
+            method: 'POST',
+            data: {
+                sensor_id: sensorId,
+                _token: '{{ csrf_token() }}'
+            },
+            success: function(response) {
+                irrigationLogId = response.id;
+                console.log('Irrigation log started:', irrigationLogId);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error('Error starting irrigation log:', textStatus, errorThrown);
+            }
+        });
+    }
+
+    function endIrrigationLog() {
+        $.ajax({
+            url:`/irrigation/endLog/${irrigationLogId}`,
+            method: 'PATCH',
+            data: {
+                sensor_id: sensorId,
+                _token: '{{ csrf_token() }}'
+            },
+            success: function() {
+                console.log('Irrigation log ended:', irrigationLogId);
+                irrigationLogId = null;
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error('Error ending irrigation log:', textStatus, errorThrown);
+            }
+        });
+    }
+    function formatDate(date, format) {
+        const d = new Date(date);
+
+        const options = {
+            date: { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' },
+            time: { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true }, 
+
+        };
+
+        if (format === 'date') {
+
+            const weekday = d.toLocaleDateString('en-US', { weekday: 'long' });
+            const monthDayYear = d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            
+            return `${monthDayYear} (${weekday})`;
+            
+        } else if (format === 'time') {
+            return d.toLocaleTimeString('en-US', options.time);
+        }
+        return d;
+    }
+
+    function calculateDuration(start, end) {
+        const startDate = new Date(start);
+        const endDate = new Date(end);
+        const diffMs = Math.abs(endDate - startDate);
+
+        const hours = Math.floor(diffMs / (1000 * 60 * 60));
+        const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diffMs % (1000 * 60)) / 1000);
+
+        return `${hours}h : ${minutes}m : ${seconds}s`;
+    }
+
+    function loadIrrigationLogs() {
+        $.ajax({
+            url: `/irrigation/logs/${sensorId}`,
+            method: 'GET',
+            success: function(data) {
+            if (data.length > 0) {
+                data.forEach(log => {
+                    if (lastLogId === null || log.id > lastLogId && log.end_time) {
+                        
+                        const startDateFormatted = formatDate(log.start_time, 'date');
+                        const startTimeFormatted = formatDate(log.start_time, 'time');
+                        const endTimeFormatted = log.end_time ? formatDate(log.end_time, 'time') : 'N/A';
+                        const duration = log.end_time ? calculateDuration(log.start_time, log.end_time) : 'N/A';
+                        
+                        const row = `
+                        <tr id="log-${log.id}">
+                            <td class="p-4 text-sm font-normal text-gray-900">${startDateFormatted}</td>
+                            <td class="p-4 text-sm font-normal text-gray-900">${log.sensor_id}</td>
+                            <td class="p-4 text-sm font-normal text-gray-900">${startTimeFormatted}</td>
+                            <td class="p-4 text-sm font-normal text-gray-900">${endTimeFormatted}</td>
+                            <td class="p-4 text-sm font-normal text-gray-900">${duration}</td>
+                        </tr>`;
+                        
+                        $('#logsContainer').append(row);
+
+                        lastLogId = log.id;
+                    }
+                });
+            }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error('Error loading logs:', textStatus, errorThrown);
+            }
+        });
+    }
+
+
+    fetchData();
+
+    setInterval(fetchData, 5000);
+
+    
+    loadIrrigationLogs();
+
+    setInterval(loadIrrigationLogs, 5000);
 
 </script>
+
+@endif
+

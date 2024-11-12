@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Plant;
+use App\Models\Sensor;
+use App\Models\PlantCategory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -25,7 +28,8 @@ class PlantController extends Controller
     public function create()
     {
         //
-        return view('my_plants.create');
+        $categories = PlantCategory::all();
+        return view('my_plants.create', compact('categories'));
     }
 
     /**
@@ -36,9 +40,7 @@ class PlantController extends Controller
         //
         $fields = $request->validate([
             'plant_name' => ['required'],
-            'irrigation_frequency' => ['required'],
-            'action_start' => ['required'],
-            'irrigation_status' => ['nullable']
+            'pc_id' => ['required'],
         ]);
         
         Auth::user()->plant()->create($fields);
@@ -52,24 +54,42 @@ class PlantController extends Controller
     public function show(Plant $my_plant)
     {
         //
+        if ($my_plant->sensor) 
+        {
+            $plant = $my_plant->load('plantCategory', 'sensor');
+        } 
+        else 
+        {
+            $plant = $my_plant->load('plantCategory');
+        }
         
-        return view('my_plants.show', ['plant'=> $my_plant]);
+        return view('my_plants.show', ['plant' => $plant]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Plant $plant)
-    {
-        //
+    public function edit(Plant $my_plant)
+    {   
+        $plant = Auth::user()->plant()->where('id', $my_plant->id)->first();
+        return view('my_plants.edit',compact('plant'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Plant $plant)
+    public function update(Request $request, Plant $my_plant)
     {
-        //
+
+        $sensor = Sensor::find($request->sensor_id);
+        
+        $sensor->update([
+            'plant_id' => $my_plant->id,
+            'ping_status' => 1, 
+            'ping_date' => Carbon::now('Asia/Shanghai'),
+        ]);
+        
+        return redirect()->route('my_plants.show', $my_plant->id) ->with('success', 'Sensor Connected and Activated!');
     }
 
     /**
@@ -82,5 +102,13 @@ class PlantController extends Controller
         $plant->delete();
 
        return back()->with('delete', 'You have just ended monitoring a plant');
+    }
+
+     public function getPlantDetailsByCategory(Request $request)
+    {
+        $pc_id = $request->pc_id;
+        $plants = PlantCategory::where('id', $pc_id)->get();
+
+        return response()->json($plants);
     }
 }

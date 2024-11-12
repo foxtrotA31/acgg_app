@@ -14,11 +14,8 @@ return new class extends Migration
         Schema::create('plants', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->integer('pc_id')->nullable();
             $table->string('plant_name');
-            $table->string('irrigation_frequency');
-            $table->string('action_start');
-            $table->string('irrigation_status')->nullable();
-            $table->time('last_irrigation')->nullable();
             $table->timestamps();
         });
     }

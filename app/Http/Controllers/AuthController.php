@@ -9,20 +9,19 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     public function register (Request $request){
-        //validate
+        
         $fields = $request->validate([
-            'firstname' => ['required','max:255'],
-            'lastname' => ['required','max:255'],
+            'name' => ['required','max:255'],
             'email' => ['required',"max:255",'email','unique:users'],
             'password'=> ['required', 'min:8','confirmed']
         ]);
-        //Creating user. Saving Data to the Database
+        
         $user = User::create($fields);
 
-        //Login
+        
         Auth::login($user);
 
-        //Redirect user to dashboard
+        
         return redirect()->route('dashboard');
     }
 
