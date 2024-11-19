@@ -32,7 +32,7 @@
                         </div>
                         <img src="{{URL('images/default_moneyplant.jpg')}}" alt="default" class="w-full h-60 sm:h-72 object-cover">
                         <div class="m-3">
-                            <h4 class="font-bold text-center">{{$plant->plant_name}}</h4>
+                            <h4 class="font-bold text-center truncate w-full">{{$plant->plant_name}}</h4>
                         </div>
                     </div>
                 </a>

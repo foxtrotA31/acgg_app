@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{env('APP_NAME')}}</title>
+    <title>{{config('app.name')}}</title>
+    <link rel="icon" href="{{ asset('acgg_logo.ico') }}" type="image/x-icon"/>
 
     @vite('resources/css/app.css')
     
@@ -13,6 +14,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;1,100;1,200&display=swap"
         rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -31,9 +34,9 @@
             <div class="items-center md:space-x-8 justify-center justify-items-start md:justify-items-center md:flex md:pt-2 w-full left-0 top-16 px-5 md:px-10 py-3 md:py-0 border-t md:border-t-0 hidden">
                 <a href="{{route('landing')}}" class="nav-text  flex hover:text-blue-500 cursor-pointer transition-colors duration-300"> Home </a>
 
-                <a class="nav-text  flex hover:text-blue-500 cursor-pointer transition-colors duration-300" href="#features"> How it Works </a>
+                <a href="#howItWorks" class="nav-text  flex hover:text-blue-500 cursor-pointer transition-colors duration-300"> How it Works </a>
 
-                <a class="nav-text  flex hover:text-blue-500 cursor-pointer transition-colors duration-300" href="#about"> About Us </a>
+                <a href="#aboutUs" class="nav-text  flex hover:text-blue-500 cursor-pointer transition-colors duration-300"> About Us </a>
             </div>
 
             <div class=" items-center space-x-5 hidden md:flex">

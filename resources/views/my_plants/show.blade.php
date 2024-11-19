@@ -1,9 +1,15 @@
 <x-layout>
 <x-user-layout>
 <div class="bg-white shadow rounded-lg mb-4 p-4 sm:p-6 h-full"> 
+    <div class="mb-5">
+        <a href="{{route('my_plants.index')}}">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+        </svg>
+        </a>
+    </div> 
     <div class="flex items-center justify-between">
-        <h3 class="text-2xl sm:text-3xl leading-none font-bold green-txt">{{$plant->plantCategory->pc_name}} <span class="mx-5 text-cyan-500"> &#10093;</span> <span class="text-green-500">{{$plant->plant_name}}</span></h3>
-    
+        <h3 class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">{{$plant->plantCategory->pc_name}} <span class="mx-5 text-cyan-500"> &#10093;</span> <span class="text-green-500">{{$plant->plant_name}}</span></h3>
         @if (!$plant->sensor)
         <div class="text-right">
             <a href="{{route('my_plants.edit', $plant->id)}}" class="text-cyan-600 inline-flex hover:bg-gray-100 hover:text-black group rounded-lg p-2"> 
@@ -114,7 +120,11 @@
             success: function(data) {
                 console.log(data);
                 
-                $('#data').text(`${data.moisture}%`);
+                
+                $('#data').text(`${data.moisture}%`).removeClass('text-3xl').addClass('text-8xl');
+                
+                
+
                 if(data.id == sensorId){
                     //  $('#data').text(`Sensor ID: ${data.id}, Moisture Level: ${data.moisture}`);
                     if (data.moisture <= wiltingPoint && irrigationLogId === null) 

@@ -5,12 +5,37 @@
             <div class="userSide-bar  flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
             <div class="userSide-bar  flex-1 px-3 bg-white divide-y space-y-1">
             <div class="text-center mb-5">
-                <img src="https://tailus.io/sources/blocks/stats-cards/preview/images/second_user.webp" alt="" class="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28">
-                <a href="" class="inline-flex mt-4 items-center">
+                <img src="{{ auth()->user()->image ? asset('storage/' . auth()->user()->image) : URL('images/profile_img.png') }}"  alt="" class="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28 cursor-pointer transform transition-all hover:scale-105 hover:border-2 hover:border-green-500 hover:shadow-lg"   onclick="openModal()">
+                {{-- modal --}}
+                <div id="profileModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+                    <div class="bg-white rounded-lg w-96 p-6">
+                        <div class="flex justify-between items-center">
+                            <h2 class="text-lg font-semibold">Upload Profile Image</h2>
+                            <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">
+                                &times;
+                            </button>
+                        </div>
+                        <form action="{{ route('profile.image.update', auth()->user()->id) }}" method="POST" enctype="multipart/form-data" class="space-y-4 mt-4">
+                        @csrf
+                        @method('PUT')
+                            <label for="image" class="block text-sm font-medium text-gray-700">Profile Image</label>
+                            <input type="file" id="image" name="image" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border file:border-gray-300 file:text-sm file:font-semibold file:bg-gray-50 file:text-gray-700 hover:file:bg-gray-100" />
+                            @error('image')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
+
+                            <button type="submit" class="bg-green-900 text-white px-4 py-2 rounded hover:bg-green-700 w-full">
+                                Upload
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <a href="{{route('profile.edit', auth()->user()->id)}}" class="inline-flex mt-4 items-center">
                     <h5 class="userSide-bar  text-xl font-bold">{{auth()->user()->name}}</h5>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 ml-3 text-green-600 hover:text-gray-600">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" /></svg>
                 </a>
+                <p class="text-sm text-gray-500">{{auth()->user()->email}}</p>
             </div>
             <ul class="space-y-2 py-3">
                 <li>
@@ -63,3 +88,12 @@
     </div>
 </div>
 </x-layout>
+<script>
+    function openModal() {
+        document.getElementById('profileModal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+        document.getElementById('profileModal').classList.add('hidden');
+    }
+</script>
