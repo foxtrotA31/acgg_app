@@ -75,7 +75,7 @@
     <!-- Content -->
     <section class="flex flex-wrap w-full lg:max-w-screen-lg sm:max-w-screen-sm md:max-w-screen-md py-10">
         <div class="text-center" id="aboutUs">
-            <h1 class="green-txt  text-5xl my-10 font-bold">ABOUT US</h1>
+            <h1 class="green-txt  text-5xl my-10 font-bold">AquaCare Technovators</h1>
             <p class="green-txt text-justify"> We are a group of Bachelor of Science in Information Technology (BSIT)
                 students in our final year, dedicated to blending
                 technology with nature. We recognize the difficulties of keeping plants healthy, especially in today’s
