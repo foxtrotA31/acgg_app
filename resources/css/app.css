@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 section {
     font-family: "Poppins", sans-serif;
 }
@@ -63,7 +64,7 @@ section {
 }
 
 .userSide-cont:hover {
-    background-color: #E8F5E9;
+    background-color: #A5D6A7;
 }
 
 .dashboard-box {
@@ -77,5 +78,13 @@ section {
 
 .irrigation-style {
     color: #235D3A;
-    background-color: #E8F5E9;
+    background-color: #A5D6A7;
+}
+
+.create-plant {
+    background-color: #A5D6A7;
+}
+
+.sensor-index {
+    background-color: #A5D6A7;
 }

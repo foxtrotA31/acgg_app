@@ -6,8 +6,8 @@
             <p class= text-xl">{{session('delete')}}</p>
         </div>
     @endif    
-    <h3 class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">My Plants</h3>
-    <p>You have {{$my_plants->count()}} Plants</p>
+    <h3 class="text-2xl sm:text-3xl leading-none font-bold green-txt">My Plants</h3>
+    <p class="green-txt">You have {{$my_plants->count()}} Plants</p>
     <div class="grid lg:grid-cols-4 gap-5 my-10">
         <div class="flex items-center justify-between">
             <a href="{{route('my_plants.create')}}" class="w-full h-60 bg-center object-cover sm:h-72 rounded-xl overflow-hidden shadow-md bg-contain bg-no-repeat flex items-center justify-center text-green-600 hover:text-white hover:scale-90" style="background-image: url('../images/default_moneyplant.jpg')">

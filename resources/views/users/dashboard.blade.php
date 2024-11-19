@@ -96,7 +96,7 @@
 <div class="grid grid-cols-1 2xl:grid-cols-2 xl:gap-4 my-4">
    <div class="bg-white shadow rounded-lg mb-4 p-4 sm:p-6 h-full">
          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">My Plants</h3>
+            <h3 class="green-txt text-2xl sm:text-3xl leading-none font-bold ">My Plants</h3>
             <a href="{{route('my_plants.index')}}" class="text-sm font-medium text-cyan-600 hover:bg-gray-100 rounded-lg inline-flex items-center p-2"> View all </a>
          </div>
          <div class="flow-root">
