@@ -10,8 +10,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function(){
 
-    Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
+    Route::get('/email/verify', [AuthController::class, 'verifyNotice'])->name('verification.notice');
+
+    Route::get('/email/verify/{id}/{hash}', [AuthController::class, 'verifyEmail'])->middleware('signed')->name('verification.verify');
+
+    Route::post('/email/verification-notification', [AuthController::class, 'verifySend'])->middleware('throttle:6,1')->name('verification.send');
+
+    Route::get('/dashboard',[DashboardController::class,'index'])->middleware('verified')->name('dashboard');
+    Route::get('/irrigation-graph', [IrrigationController::class, 'showIrrigationGraph'])->name('irrigation.graph');
+    Route::get('/irrigation-graph-data', [IrrigationController::class, 'getIrrigationData'])->name('irrigation.graph.data');
     
+    Route::get('/user/edit/profile/{id}',[AuthController::class,'editProfile'])->name('profile.edit');
+    Route::put('/user/update/profile/{id}',[AuthController::class,'updateProfile'])->name('profile.update');
+    Route::put('/user/update/profile-image/{id}', [AuthController::class, 'updateProfileImage'])->name('profile.image.update');
     Route::post('/logout',[AuthController::class, 'logout'])->name('logout');
 
     Route::resource('/my_plants', PlantController::class);
@@ -25,8 +36,6 @@ Route::middleware('auth')->group(function(){
     Route::patch('/irrigation/endLog/{id}', [IrrigationLogController::class, 'endLog'])->name('endLog');
     Route::get('/irrigation/logs/{id}', [IrrigationLogController::class, 'getLogs'])->name('getLogs');
     
-
-    
 });
 
 Route::middleware('guest')->group(function (){
@@ -39,8 +48,3 @@ Route::middleware('guest')->group(function (){
     Route::post('/login', [AuthController::class, 'login']);
     
 });
-
-
-
-
- 

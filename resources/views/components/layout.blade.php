@@ -4,31 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{env('APP_NAME')}}</title>
-<<<<<<< HEAD
+    <title>{{config('app.name')}}</title>
+    <link rel="icon" href="{{ asset('acgg_logo.ico') }}" type="image/x-icon"/>
 
     @vite('resources/css/app.css')
-=======
-    
-    @vite(['resources/css/app.css','resources/js/app.js'])
->>>>>>> 4613e39a76fe3c88d557e551276450475c003149
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;1,100;1,200&display=swap"
         rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
     <header class="container">
         @guest
-<<<<<<< HEAD
-        <nav class="flex justify-between md:justify-around py-4 bg-cyan-950/80 backdrop-blur-md shadow-md w-full px-10 fixed top-0 left-0 right-0 z-10 md:px-3">
-=======
         <nav class="navbar  flex justify-between md:justify-around py-4 backdrop-blur-md shadow-md w-full px-10 fixed top-0 left-0 right-0 z-10 md:px-3">
             <!-- Logo Container -->
->>>>>>> 4613e39a76fe3c88d557e551276450475c003149
             <div class="flex items-center">
                 <a href="{{route('landing')}}" class="cursor-pointer">
                     <h3 class="text-2xl font-medium text-blue-500">
@@ -40,30 +34,22 @@
             <div class="items-center md:space-x-8 justify-center justify-items-start md:justify-items-center md:flex md:pt-2 w-full left-0 top-16 px-5 md:px-10 py-3 md:py-0 border-t md:border-t-0 hidden">
                 <a href="{{route('landing')}}" class="nav-text  flex hover:text-blue-500 cursor-pointer transition-colors duration-300"> Home </a>
 
-                <a class="nav-text  flex hover:text-blue-500 cursor-pointer transition-colors duration-300"> How it Works </a>
+                <a href="#howItWorks" class="nav-text  flex hover:text-blue-500 cursor-pointer transition-colors duration-300"> How it Works </a>
 
-                <a class="nav-text  flex hover:text-blue-500 cursor-pointer transition-colors duration-300"> About Us </a>
+                <a href="#aboutUs" class="nav-text  flex hover:text-blue-500 cursor-pointer transition-colors duration-300"> About Us </a>
             </div>
 
             <div class=" items-center space-x-5 hidden md:flex">
-<<<<<<< HEAD
-                <a href="{{ route('register') }}" class="flex text-white hover:text-blue-500 cursor-pointer transition-colors duration-300">
-=======
                 <!-- Register -->
                 <a href="{{ route('register') }}" class="nav-text  flex hover:text-blue-500 cursor-pointer transition-colors duration-300">
->>>>>>> 4613e39a76fe3c88d557e551276450475c003149
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 mr-2 mt-0.5 size-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                     </svg>
                     Register
                 </a>
 
-<<<<<<< HEAD
-                <a href="{{route('login')}}" class="flex text-white cursor-pointer transition-colors duration-300 font-semibold hover:text-blue-600">
-=======
                 <!-- Login -->
                 <a href="{{route('login')}}" class="nav-text  flex cursor-pointer transition-colors duration-300 font-semibold hover:text-blue-600">
->>>>>>> 4613e39a76fe3c88d557e551276450475c003149
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 mr-2 mt-0.5 size-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25" />
                     </svg>
@@ -97,7 +83,7 @@
                 <img src="{{URL('images/acgg_logo.png')}}" class="h-6 mr-2" alt="Windster Logo">
                 <span class="self-center whitespace-nowrap">Acqua Care Green Guard</span>
             </a>
-        </div>w
+        </div>
         <div class="flex items-center">
             <form action="{{route('logout')}}" method="post">
             @csrf
@@ -125,17 +111,11 @@
         {{$slot}}
     </main>
     @endauth
-<<<<<<< HEAD
-
-    @guest
-    <footer class=" bg-cyan-950 pt-10 sm:mt-10 w-full">
-=======
         
     {{-- Footer --}}
     @guest
     <footer class="footer sm:mt-10 w-full">
         <!-- Copyright Bar -->
->>>>>>> 4613e39a76fe3c88d557e551276450475c003149
         <div class="pt-2">
             <div class="white-txt  flex pb-5 px-3 m-auto pt-5 text-sm flex-col md:flex-row max-w-6xl">
                 <div class="mt-2">© Copyright 2024-year. All Rights Reserved.</div>

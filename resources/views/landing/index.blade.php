@@ -1,6 +1,5 @@
 <x-layout>
-    <section
-        class="flex flex-wrap items-center -mx-3 font-sans px-4 w-full lg:max-w-screen-lg sm:max-w-screen-sm md:max-w-screen-md pb-20">
+    <section class="flex flex-wrap items-center -mx-3 font-sans px-4 w-full lg:max-w-screen-lg sm:max-w-screen-sm md:max-w-screen-md pb-20">
         <!-- Column-1 -->
         <div class="px-3 w-full lg:w-2/5">
             <div class="mx-auto mb-8 max-w-lg text-center lg:mx-0 lg:max-w-md lg:text-left">
@@ -35,7 +34,7 @@
         style="background-image: url('images/plant-bg.jpg');">
         <h1 class="white-txt  text-5xl font-semibold my-8"> How it Works </h1>
 
-        <div class="mx-auto grid gap-6 md:w-4/5 md:grid-cols-3">
+        <div class="mx-auto grid gap-6 md:w-4/5 md:grid-cols-3" id="howItWorks">
             <div class="bg-gradient-to-tr from-cyan-600 to bg-green-600 rounded-3xl bg-opacity-30 px-8 py-5">
                 <div class="mb-6 space-y-4">
                     <h3 class="white-txt  text-2xl font-semibold">Step 1</h3>
@@ -70,7 +69,7 @@
 
     <!-- Content -->
     <section class="flex flex-wrap w-full lg:max-w-screen-lg sm:max-w-screen-sm md:max-w-screen-md py-10">
-        <div class="text-center">
+        <div class="text-center" id="aboutUs">
             <h1 class="green-txt  text-5xl my-10 font-bold">ABOUT US</h1>
             <p class="green-txt text-justify"> We are a group of Bachelor of Science in Information Technology (BSIT)
                 students in our final year, dedicated to blending
@@ -93,7 +92,7 @@
                 care.
             </p>
         </div>
-        <div class="mt-20">
+        <div class="mt-20" id="meetUs">
             <h2 class="green-txt  mb-20 text-3xl font-semibold">Meet The Team</h2>
             <div class="grid gap-12 items-center md:grid-cols-3 mx-auto px-6 md:px-12 xl:px-32">
                 <div class="space-y-4 text-center">
