@@ -1,9 +1,9 @@
 <x-layout>
 <x-user-layout>
 <div class="bg-white shadow rounded-lg mb-4 p-4 sm:p-6 h-full">
-    @if (session('delete'))
-        <div class="bg-red-500 px-2 py-2 text-white rounded-xl">
-            <p class= text-xl">{{session('delete')}}</p>
+    @if (session('quit'))
+        <div class="bg-red-600 px-2 py-2 text-white rounded-xl mb-10">
+            <p class= text-xl">{{session('quit')}}</p>
         </div>
     @endif    
     <h3 class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">My Plants</h3>
@@ -18,22 +18,18 @@
         </div>
         @foreach ($my_plants as $plant)
         <div class="flex items-center justify-between">
-            <div class="my-8">
+            <div class="my-8 bg-green-600 text-white rounded-xl overflow-hidden shadow-md hover:scale-90">
+                <form action="{{route('my_plants.destroy',$plant)}}" method="post">
+                @csrf
+                @method('DELETE')
+                    <button class="w-full bg-red-600 hover:bg-red-700 focus:bg-red-700 text-white py-1  px-3 font-semibold text-sm" >
+                        Quit and Remove Plant
+                    </button>
+                </form>
                 <a href="{{route('my_plants.show', $plant)}}">
-                    <div class="bg-green-600 text-white rounded-xl overflow-hidden shadow-md hover:scale-90">
-                        <div class="text-right">
-                            <form action="{{route('my_plants.destroy', $plant)}}" method="post">
-                            @csrf
-                            @method('DELETE')
-                                <button class="w-full bg-red-600 hover:bg-red-700 focus:bg-red-700 text-white py-1  px-3 font-semibold text-sm" >
-                                    Quit Monitoring 
-                                </button>
-                            </form>
-                        </div>
-                        <img src="{{URL('images/default_moneyplant.jpg')}}" alt="default" class="w-full h-60 sm:h-72 object-cover">
-                        <div class="m-3">
-                            <h4 class="font-bold text-center truncate w-full">{{$plant->plant_name}}</h4>
-                        </div>
+                    <img src="{{URL('images/default_moneyplant.jpg')}}" alt="default" class="w-full h-60 sm:h-72 object-cover">
+                    <div class="m-3">
+                        <h4 class="font-bold text-center truncate w-full">{{$plant->plant_name}}</h4>
                     </div>
                 </a>
             </div>

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->integer('pc_id')->nullable();
             $table->string('plant_name');
+            $table->integer('monitoring_status')->nullable();
             $table->timestamps();
         });
     }

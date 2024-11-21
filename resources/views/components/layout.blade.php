@@ -13,9 +13,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;1,100;1,200&display=swap"
         rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -81,7 +81,7 @@
             </button>
             <a href="{{route('dashboard')}}" class="text-xl font-bold flex items-center lg:ml-2.5">
                 <img src="{{URL('images/acgg_logo.png')}}" class="h-6 mr-2" alt="Windster Logo">
-                <span class="self-center whitespace-nowrap">Acqua Care Green Guard</span>
+                <span class="self-center whitespace-nowrap">Aqua Care Green Guard</span>
             </a>
         </div>
         <div class="flex items-center">
@@ -123,6 +123,6 @@
         </div>
     </footer>
     @endguest
+{{-- @vite('resources/js/app.js') --}}
 </body>
-@vite('resources/js/app.js')
 </html>

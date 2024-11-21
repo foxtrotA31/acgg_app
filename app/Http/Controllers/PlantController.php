@@ -17,7 +17,8 @@ class PlantController extends Controller
     public function index()
     {
         //
-        $my_plants = Auth::user()->plant()->latest()->paginate(10);
+        $my_plants = Auth::user()->plant()->where('monitoring_status','!=',3)->latest()->paginate(10);
+        // 3 means terminated
 
         return view('my_plants.index', ['my_plants' => $my_plants]);
     }
@@ -38,12 +39,16 @@ class PlantController extends Controller
     public function store(Request $request)
     {
         //
-        $fields = $request->validate([
-            'plant_name' => ['required'],
+        $request->validate([
             'pc_id' => ['required'],
+            'plant_name' => ['required'],
         ]);
         
-        Auth::user()->plant()->create($fields);
+        Auth::user()->plant()->create([
+            'pc_id' => $request->pc_id,
+            'plant_name' => $request->plant_name,
+            'monitoring_status' => 0
+        ]);
         
         return back()->with('success','Plant Added');
     }
@@ -80,13 +85,17 @@ class PlantController extends Controller
      */
     public function update(Request $request, Plant $my_plant)
     {
-
+        
         $sensor = Sensor::find($request->sensor_id);
         
         $sensor->update([
             'plant_id' => $my_plant->id,
             'ping_status' => 1, 
             'ping_date' => Carbon::now('Asia/Shanghai'),
+        ]);
+
+        $my_plant->update([
+            'monitoring_status' => 1
         ]);
         
         return redirect()->route('my_plants.show', $my_plant->id) ->with('success', 'Sensor Connected and Activated!');
@@ -96,12 +105,20 @@ class PlantController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Plant $my_plant)
-    {
-        $plant = Plant::find($my_plant->id);
+    {   
+        $sensor = Sensor::where('plant_id','=',$my_plant->id)
+        ->update([
+            'plant_id' => null,
+            'ping_status' => null,
+            'action_status' => null, 
+            'ping_date' => null,
+        ]);
 
-        $plant->delete();
+        $my_plant->update([
+            'monitoring_status' => 0
+        ]);
 
-       return back()->with('delete', 'You have just ended monitoring a plant');
+       return back()->with('quit', 'Monitoring for plant '.$my_plant->plant_name.' has been terminated and it has been removed from the list. All irrigation logs associated with this plant, if linked to a sensor device, will be retained.');
     }
 
      public function getPlantDetailsByCategory(Request $request)
@@ -111,4 +128,5 @@ class PlantController extends Controller
 
         return response()->json($plants);
     }
+
 }

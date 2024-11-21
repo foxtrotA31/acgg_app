@@ -18,6 +18,7 @@ class IrrigationLogController extends Controller
                              ->join('plants', 'plants.id', '=', 'sensors.plant_id')
                              ->where('plants.user_id', Auth::user()->id)
                              ->select('irrigation_logs.*')
+                             ->orderBy('irrigation_logs.start_time','DESC')
                              ->get();
 
         return view('irrigation_logs.index',compact('my_logs'));
@@ -66,7 +67,12 @@ class IrrigationLogController extends Controller
 
     public function getLogs($id)
     {
-        $logs = IrrigationLog::where('sensor_id', $id)->get();
+
+        $logs = IrrigationLog::where('sensor_id', $id)
+        ->join('sensors', 'sensors.id', '=', 'irrigation_logs.sensor_id')
+        ->join('plants','plants.id', '=', 'sensors.plant_id')
+        ->select('irrigation_logs.*')
+        ->get();
         return response()->json($logs);
     }
 }

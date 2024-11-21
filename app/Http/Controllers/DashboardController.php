@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\IrrigationLog;
+use App\Models\Sensor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,66 +12,64 @@ class DashboardController extends Controller
 {
 
     public function index(){
-
-        $my_plants = Auth::user()->plant;
-
-        return view('users.dashboard', ['my_plants' => $my_plants]);
-
-    }
-    
-    public function showIrrigationGraph()
-    {
-        // This will return the view with empty data or default data for the first load
+                
         return view('users.dashboard');
     }
 
     public function getIrrigationData(Request $request)
-{
-    // Ensure we fetch only logs for the authenticated user
-    $startDate = Carbon::now()->subWeek();  // past 7 days
-    $endDate = Carbon::now();
+    {
+        
+        $startDate = Carbon::now()->subWeek();
+        $endDate = Carbon::now();
 
-    // Query irrigation logs based on the authenticated user
-    $logs = IrrigationLog::selectRaw('
-            DATE(start_time) as date,
-            sensor_id,
-            SUM(TIMESTAMPDIFF(SECOND, start_time, end_time)) / 60 as total_duration
-        ')
-        ->where('user_id', Auth::id())  // Filter by authenticated user
-        ->whereBetween('start_time', [$startDate, $endDate]) // Filter by date range
-        ->groupBy('date', 'sensor_id') // Group by date and sensor
-        ->orderBy('date', 'asc') // Order by date
-        ->get();
+        
+        $logs = IrrigationLog::selectRaw('
+                MONTH(start_time) as month,
+                sensor_id,
+                SUM(TIMESTAMPDIFF(SECOND, start_time, end_time)) / 60 as total_duration
+            ')
+            ->join('sensors', 'sensors.id', '=', 'irrigation_logs.sensor_id') // Join with sensors table
+            ->join('plants', 'plants.id', '=', 'sensors.plant_id') // Join with plants table
+            ->where('plants.user_id', Auth::id())
+            ->groupBy('month', 'sensor_id') // Group by date and sensor
+            ->orderBy('month', 'asc') // Order by date
+            ->get();
+        
+        $labels = $logs->groupBy('month')->keys()->map(function ($month) {
+            return Carbon::create()->month($month)->format('F'); // Full month name
+        });
+        $datasets = [];
 
-    // Format the data for the chart
-    $labels = $logs->groupBy('date')->keys();
-    $datasets = [];
+        
+        foreach ($logs->groupBy('sensor_id') as $sensorId => $sensorLogs) {
+            $sensorId = 'Sensor ' . $sensorId; 
+            $dataset = [
+                'label' => $sensorId,
+                'data' => $sensorLogs->pluck('total_duration')->toArray(),
+                'borderColor' => $this->randomColor(),
+                'fill' => false,
+            ];
 
-    // Group by sensor_id and create a dataset for each sensor
-    foreach ($logs->groupBy('sensor_id') as $sensorId => $sensorLogs) {
-        $sensorName = 'Sensor ' . $sensorId; // Or fetch actual sensor name from the Sensor model
-        $dataset = [
-            'label' => $sensorName,
-            'data' => $sensorLogs->pluck('total_duration')->toArray(),
-            'borderColor' => $this->randomColor(),
-            'fill' => false,
-        ];
-
-        $datasets[] = $dataset;
-    }
+            $datasets[] = $dataset;
+        }
 
     // Return the data as JSON for the AJAX call
-    return response()->json([
-        'labels' => $labels,
-        'datasets' => $datasets
-    ]);
-}
+        return response()->json([ 'labels' => $labels, 'datasets' => $datasets]);
+    }
+    
 
 // Helper function to generate random color for chart lines
-private function randomColor()
-{
-    return sprintf('#%06X', mt_rand(0, 0xFFFFFF));
-}
+    private function randomColor()
+    {
+        return sprintf('#%06X', mt_rand(0, 0xFFFFFF));
+    }
 
-   
+    public function getDeviceAction() {
+        // Select only the id and action_status for simplicity
+        $devices = Sensor::select('sensors.id', 'sensors.action_status')
+            ->join('plants','plants.id','=','sensors.plant_id')
+            ->where('plants.user_id', Auth::id())
+            ->get();
+        return response()->json($devices);
+    }
 }

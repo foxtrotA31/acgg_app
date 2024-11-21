@@ -36,7 +36,7 @@ class AuthController extends Controller
     Public function verifyEmail(EmailVerificationRequest $request) {
         $request->fulfill();
     
-        return redirect('/home');
+        return redirect('/dashboard');
     }
 
     Public function verifySend(Request $request) {

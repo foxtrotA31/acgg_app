@@ -12,6 +12,7 @@ class Plant extends Model
     protected $fillable = [
         'pc_id',
         'plant_name',
+        'monitoring_status',
     ];
 
     public function plantCategory() 
