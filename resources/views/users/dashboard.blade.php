@@ -24,23 +24,6 @@
       </div>
    </div>
 </div>
-   {{-- <div class="dashboard-box-grn shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
-      <div class="mb-4 flex items-center justify-between">
-         <div>
-            <h3 class="text-2xl sm:text-3xl leading-none font-bold ">Plant Soil Moisture</h3>
-            <span class="text-base font-normal ">These are the soil moisture level of each plant.</span>
-         </div>
-      </div>
-      <div class="flex flex-col mt-8">
-         <div class="overflow-x-auto rounded-lg">
-            <div class="align-middle inline-block min-w-full">
-               <div class="shadow overflow-hidden sm:rounded-lg">
-                  <canvas id="soilMoisureChart"> </canvas>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div> --}}
 </x-user-layout>
 </x-layout>
 <script>
