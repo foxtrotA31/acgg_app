@@ -68,16 +68,6 @@
         <p class="mt-10 text-center text-gray-400">There are no irrigation logs available for this plant. Please connect a sensor to enable monitoring.</p>
         @endif
     </div>
-    {{-- <div class="my-20">
-        <h3 class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">From Seed to Sprout Gallery</h3>
-        <p>Your Plant's Journey Begins Here! Capture and Witness the Magic of Growth.</p>
-        <div class="grid grid-cols-5 gap-5 mt-10">
-            
-            <div class="card">
-                <img src="{{URL('images/default_moneyplant.jpg')}}" alt="">
-            </div>
-        </div>
-    </div> --}}
 </div>
 </x-user-layout>
 </x-layout>
