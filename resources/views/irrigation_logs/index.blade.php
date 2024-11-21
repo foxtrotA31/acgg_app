@@ -1,25 +1,25 @@
 <x-layout>
 <x-user-layout>
 <div class="bg-white shadow rounded-lg mb-4 p-4 sm:p-6 h-full">
-    <h3 class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">My Irrigation Logs</h3>
-    <p>You have {{$my_logs->count()}} Irrigation Logs</p>
+    <h3 class="text-2xl sm:text-3xl leading-none font-bold green-txt">My Irrigation Logs</h3>
+    <p class="green-txt font-medium">You have {{$my_logs->count()}} Irrigation Logs</p>
     @if ($my_logs)
     <table class="min-w-full divide-y divide-gray-200 mt-5">
-        <thead class="bg-gray-50">
+        <thead class="sensor-index">
             <tr>
-                <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th scope="col" class="p-4 text-left text-xs font-bold green-txt uppercase tracking-wider">
                 Date
                 </th>
-                <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th scope="col" class="p-4 text-left text-xs font-bold green-txt uppercase tracking-wider">
                 Sensor ID
                 </th>
-                <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th scope="col" class="p-4 text-left text-xs font-bold green-txt uppercase tracking-wider">
                 Time Started
                 </th>
-                <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th scope="col" class="p-4 text-left text-xs font-bold green-txt uppercase tracking-wider">
                 Time Ended
                 </th>
-                <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th scope="col" class="p-4 text-left text-xs font-bold green-txt uppercase tracking-wider">
                 Duration
                 </th>
             </tr>
@@ -27,19 +27,19 @@
         <tbody class="bg-white">
         @foreach ($my_logs as $log)
             <tr>
-                <td class="p-4 text-sm font-normal text-gray-900">
+                <td class="p-4 text-sm font-normal green-txt">
                     {{ \Carbon\Carbon::parse($log->start_time)->format('l, F j, Y') }}
                 </td>
-                <td class="p-4 text-sm font-normal text-gray-900">
+                <td class="p-4 text-sm font-normal green-txt">
                     {{$log->sensor_id}}
                 </td>
-                <td class="p-4 text-sm font-normal text-gray-900">
+                <td class="p-4 text-sm font-normal green-txt">
                     {{ \Carbon\Carbon::parse($log->start_time)->format('h:i:s A') }}
                 </td>
-                <td class="p-4 text-sm font-normal text-gray-900">
+                <td class="p-4 text-sm font-normal green-txt">
                     {{ \Carbon\Carbon::parse($log->end_time)->format('h:i:s A') }}
                 </td>
-                <td class="p-4 text-sm font-normal text-gray-900">
+                <td class="p-4 text-sm font-normal green-txt">
                     @php
                         $start = \Carbon\Carbon::parse($log->start_time);
                         $end = \Carbon\Carbon::parse($log->end_time);

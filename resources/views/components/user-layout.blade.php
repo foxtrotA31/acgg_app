@@ -44,7 +44,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z" />
                             <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z" />
                         </svg>
-                        <span class="ml-3">Dashboard</span>
+                        <span class="ml-3 font-normal">Dashboard</span>
                     </a>
                 </li>
                 <li>
@@ -53,21 +53,21 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9.348 14.652a3.75 3.75 0 0 1 0-5.304m5.304 0a3.75 3.75 0 0 1 0 5.304m-7.425 2.121a6.75 6.75 0 0 1 0-9.546m9.546 0a6.75 6.75 0 0 1 0 9.546M5.106 18.894c-3.808-3.807-3.808-9.98 0-13.788m13.788 0c3.808 3.807 3.808 9.98 0 13.788M12 12h.008v.008H12V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
                         </svg>
 
-                        <span class="ml-3 flex-1 whitespace-nowrap">Sensor Devices</span>
+                        <span class="ml-3 flex-1 whitespace-nowrap #about font-normal">Sensor Devices</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{route('my_plants.index')}}" target="_blank" class="userSide-cont  text-base font-normal rounded-lg flex items-center p-2 group ">
                         <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <rect x="4" y="3" width="8" height="14" rx="4" />  <rect x="12" y="7" width="8" height="10" rx="3" />  <line x1="8" y1="21" x2="8" y2="13" />  <line x1="16" y1="21" x2="16" y2="14" /></svg>
-                        <span class="ml-3 flex-1 whitespace-nowrap">My Plants</span>
+                        <span class="ml-3 flex-1 whitespace-nowrap font-normal">My Plants</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('getAllLogs')}}" target="_blank" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
+                    <a href="{{route('getAllLogs')}}" target="_blank" class="userSide-cont text-base font-normal rounded-lg flex items-center p-2 group ">
                         <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
                         </svg>
-                        <span class="ml-3 flex-1 whitespace-nowrap">Irrigation Logs</span>
+                        <span class="ml-3 flex-1 whitespace-nowrap font-normal ">Irrigation Logs</span>
                     </a>
                 </li>
             </ul>

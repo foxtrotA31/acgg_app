@@ -31,34 +31,39 @@
 
     <!-- Parallax Background -->
     <section class="flex flex-col w-full bg-cover bg-fixed bg-center items-center py-10"
-        style="background-image: url('images/plant-bg.jpg');">
-        <h1 class="white-txt  text-5xl font-semibold my-8"> How it Works </h1>
+        style="background-image: url('images/plant-bg.jpg');" id="features">
+        <h1 class="white-txt  text-5xl font-semibold my-8"> Monitor Your Plants in Three Simple Steps </h1>
 
         <div class="mx-auto grid gap-6 md:w-4/5 md:grid-cols-3" id="howItWorks">
             <div class="bg-gradient-to-tr from-cyan-600 to bg-green-600 rounded-3xl bg-opacity-30 px-8 py-5">
                 <div class="mb-6 space-y-4">
-                    <h3 class="white-txt  text-2xl font-semibold">Step 1</h3>
-                    <p class="white-txt ">Sign up for an account and log in to access the platform.</p>
+                    <h3 class="white-txt  text-2xl font-semibold">Enter Plant Information</h3>
+                    <p class="white-txt ">Begin by naming your plant and selecting its category from our options. We’ve
+                        made it easy—just pick the type you think best matches your plant, whether it’s a succulent,
+                        herb, vegetable, or another category. This step helps our system tailor the monitoring to your
+                        plant’s unique needs.</p>
                 </div>
                 <img src="{{URL('images/acgg_logo.png')}}" alt="acgg_logo" class="w-1/2 ml-auto" alt="illustration"
                     loading="lazy" width="600" height="300">
             </div>
             <div class="bg-gradient-to-tr from-cyan-600 to bg-green-600 rounded-3xl bg-opacity-30 px-8 py-5">
                 <div class="mb-6 space-y-4">
-                    <h3 class="text-2xl font-semibold white-txt ">Step 2</h3>
-                    <p class="white-txt">Connect the IoT sensors to the specific plant, plant type, soil, or pot you
-                        wish to monitor. These sensors will track moisture levels to help you stay informed about your
-                        plant’s needs.</p>
+                    <h3 class="text-2xl font-semibold white-txt ">Connect to Sensor Devices</h3>
+                    <p class="white-txt">Connect the sensors that will keep track of your plant’s moisture levels. To do
+                        this, simply enter the Sensor ID or Model ID provided with your device. Our system will then
+                        check to make sure the sensor is valid and available for use. Once verified, the sensor will be
+                        ready to link with your plant, so you can monitor it in real-time.</p>
                 </div>
                 <img src="{{URL('images/acgg_logo.png')}}" alt="acgg_logo" class="w-1/2 ml-auto" alt="illustration"
                     loading="lazy" width="600" height="300">
             </div>
             <div class="bg-gradient-to-tr from-cyan-600 to bg-green-600 rounded-3xl bg-opacity-30 px-8 py-5">
                 <div class="mb-6 space-y-4">
-                    <h3 class="text-2xl font-semibold  white-txt ">Step 3</h3>
-                    <p class="white-txt  ">Set up a watering schedule based on the moisture levels and monitor the
-                        health of your plants directly through the platform. Stay updated, adjust settings, and ensure
-                        your plants are well-cared for with ease.</p>
+                    <h3 class="text-2xl font-semibold  white-txt ">Start Moisture Monitoring</h3>
+                    <p class="white-txt  ">With your sensor connected, monitoring begins immediately. The sensor tracks
+                        your plant's soil moisture, and if it drops too low—meaning it’s time for water—our system will
+                        automatically start watering. Once the soil reaches the optimal moisture level, the watering
+                        will stop.</p>
                 </div>
                 <img src="{{URL('images/acgg_logo.png')}}" alt="acgg_logo" class="w-1/2 ml-auto" alt="illustration"
                     loading="lazy" width="600" height="300">
@@ -70,7 +75,7 @@
     <!-- Content -->
     <section class="flex flex-wrap w-full lg:max-w-screen-lg sm:max-w-screen-sm md:max-w-screen-md py-10">
         <div class="text-center" id="aboutUs">
-            <h1 class="green-txt  text-5xl my-10 font-bold">ABOUT US</h1>
+            <h1 class="green-txt  text-5xl my-10 font-bold">AquaCare Technovators</h1>
             <p class="green-txt text-justify"> We are a group of Bachelor of Science in Information Technology (BSIT)
                 students in our final year, dedicated to blending
                 technology with nature. We recognize the difficulties of keeping plants healthy, especially in today’s
@@ -113,7 +118,7 @@
                 </div>
                 <div class="space-y-4 text-center">
                     <img class="w-64 h-64 mx-auto object-cover rounded-xl md:w-40 md:h-40 lg:w-64 lg:h-64"
-                        src="{{URL('images/renyel.jpg')}}" alt="woman" loading="lazy" width="1000" height="667">
+                        src="{{URL('images/renyelgwapo.jpg')}}" alt="woman" loading="lazy" width="1000" height="667">
                     <div>
                         <h4 class="green-txt  text-2xl">Renyel Romanillos</h4>
                         <span class="block text-sm text-gray-500">UI/UX Designer/Hipster</span>

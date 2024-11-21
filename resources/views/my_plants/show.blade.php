@@ -20,42 +20,42 @@
         </div>
         @endif
     </div>
-    <p class="mt-5 text-justify">{{$plant->plantCategory->pc_description}}</p>
+    <p class="mt-5 text-justify green-txt text-lg font-normal">{{$plant->plantCategory->pc_description}}</p>
     
     <div class="mt-10 grid grid-cols-3 gap-6">
         <div>
-            <h3 class="text-2xl sm:text-3xl leading-none font-bold text-gray-900 text-center">Ideal Moisture</h3>
-            <p class=" text-8xl text-center mt-10 text-green-600">{{$plant->plantCategory->pc_ideal_moisture}}%</p>
+            <h3 class="text-2xl sm:text-3xl leading-none font-bold green-txt text-center">Ideal Moisture</h3>
+            <p class="text-7xl text-center mt-10 text-green-600">{{$plant->plantCategory->pc_ideal_moisture}}%</p>
         </div>
         <div>
-            <h3 class="text-2xl sm:text-3xl leading-none font-bold text-gray-900 text-center">Wilting Point</h3>
-            <p class="text-8xl text-center mt-10 text-red-600">{{$plant->plantCategory->pc_wilting_point}}%</p>
+            <h3 class="text-2xl sm:text-3xl leading-none font-bold green-txt text-center">Wilting Point</h3>
+            <p class="text-7xl text-center mt-10 text-red-600">{{$plant->plantCategory->pc_wilting_point}}%</p>
         </div>
         <div>
-            <h3 class="text-2xl sm:text-3xl leading-none font-bold text-gray-900 text-center">Current Moisture</h3>
-            <p class="text-8xl text-center mt-10 text-cyan-600" id="data"> </p>
+            <h3 class="text-2xl sm:text-3xl leading-none font-bold green-txt text-center">Current Moisture</h3>
+            <p class="text-7xl text-center mt-10 text-cyan-600" id="data"> </p>
         </div>
     </div>
 
-    <div class="my-20">
-        <h3 class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">Irrigation History</h3>
+    <div class="my-20 ">
+        <h3 class="text-2xl sm:text-3xl leading-none font-bold green-txt">Irrigation History</h3>
         @if ($plant->sensor)
         <table class="min-w-full divide-y divide-gray-200 mt-5">
-            <thead class="bg-gray-50">
+            <thead class="sensor-index">
                 <tr>
-                    <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th scope="col" class="p-4 text-left text-xs font-bold green-txt uppercase tracking-wider">
                     Date
                     </th>
-                    <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th scope="col" class="p-4 text-left text-xs font-bold green-txt uppercase tracking-wider">
                     Sensor ID
                     </th>
-                    <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th scope="col" class="p-4 text-left text-xs font-bold green-txt uppercase tracking-wider">
                     Time Started
                     </th>
-                    <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th scope="col" class="p-4 text-left text-xs font-bold green-txt uppercase tracking-wider">
                     Time Ended
                     </th>
-                    <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th scope="col" class="p-4 text-left text-xs font-bold green-txt uppercase tracking-wider">
                     Duration
                     </th>
                 </tr>
@@ -65,17 +65,17 @@
             </tbody>
         </table>
         @else
-        <p class="mt-10 text-center text-gray-400">There are no irrigation logs available for this plant. Please connect a sensor to enable monitoring.</p>
+        <p class="mt-10 text-center text-gray-500">There are no irrigation logs available for this plant. Please connect a sensor to enable monitoring. <span class="green-txt font-semibold">Located at the upper right corner of the screen.</span></p>
         @endif
     </div>
-    {{-- <div class="my-20">
+    <div class="my-20">
         <h3 class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">From Seed to Sprout Gallery</h3>
         <p>Your Plant's Journey Begins Here! Capture and Witness the Magic of Growth.</p>
         <div class="grid grid-cols-5 gap-5 mt-10">
             
             <div class="card">
                 <img src="{{URL('images/default_moneyplant.jpg')}}" alt="">
-            </div>
+            </div> 
         </div>
     </div> --}}
 </div>
@@ -230,11 +230,11 @@
                         
                         const row = `
                         <tr id="log-${log.id}">
-                            <td class="p-4 text-sm font-normal text-gray-900">${startDateFormatted}</td>
-                            <td class="p-4 text-sm font-normal text-gray-900">${log.sensor_id}</td>
-                            <td class="p-4 text-sm font-normal text-gray-900">${startTimeFormatted}</td>
-                            <td class="p-4 text-sm font-normal text-gray-900">${endTimeFormatted}</td>
-                            <td class="p-4 text-sm font-normal text-gray-900">${duration}</td>
+                            <td class="p-4 text-sm font-normal green-txt">${startDateFormatted}</td>
+                            <td class="p-4 text-sm font-normal green-txt">${log.sensor_id}</td>
+                            <td class="p-4 text-sm font-normal green-txt">${startTimeFormatted}</td>
+                            <td class="p-4 text-sm font-normal green-txt">${endTimeFormatted}</td>
+                            <td class="p-4 text-sm font-normal green-txt">${duration}</td>
                         </tr>`;
                         
                         $('#logsContainer').append(row);
